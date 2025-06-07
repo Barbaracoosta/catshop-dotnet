@@ -1,0 +1,80 @@
+﻿@page
+@model CatShop.Pages.EditModel
+@{
+}
+
+<div class="row pt-5">
+    <div class="col-md-4">
+        <form method="post">
+            <h4>Alteração de ArtefatoFelino</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <input type="hidden" asp-for="ArtefatoFelino.ArtefatoFelinoId" />
+
+            <div class="form-group">
+                <label asp-for="ArtefatoFelino.Nome" class="control-label"></label>
+                <input asp-for="ArtefatoFelino.Nome" class="form-control" />
+                <span asp-validation-for="ArtefatoFelino.Nome" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ArtefatoFelino.Descricao" class="control-label"></label>
+                <input asp-for="ArtefatoFelino.Descricao" class="form-control" />
+                <span asp-validation-for="ArtefatoFelino.Descricao" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ArtefatoFelino.Imagem" class="control-label"></label>
+                <input asp-for="ArtefatoFelino.Imagem" class="form-control" />
+                <span asp-validation-for="ArtefatoFelino.Imagem" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ArtefatoFelino.Preco" class="control-label"></label>
+                <input asp-for="ArtefatoFelino.Preco" class="form-control" />
+                <span asp-validation-for="ArtefatoFelino.Preco" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3 mb-3">
+                <input class="form-check-input" asp-for="ArtefatoFelino.Disponibilidade" />
+                <label asp-for="ArtefatoFelino.Disponibilidade"></label>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ArtefatoFelino.DataCadastro" class="control-label"></label>
+                <input asp-for="ArtefatoFelino.DataCadastro" class="form-control" />
+                <span asp-validation-for="ArtefatoFelino.DataCadastro" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3 mb-3">
+
+                <label asp-for="ArtefatoFelino.MarcaId" class="control-label"></label>
+
+                <select class="form-select" asp-for="ArtefatoFelino.MarcaId"
+                        asp-items="Model.Marcas">
+                    <option value="">Selecione uma opção</option>
+                </select>
+
+                <span asp-validation-for="ArtefatoFelino.MarcaId" class="text-danger">
+                </span>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <input type="submit" value="Excluir" class="btn btn-danger"
+                       asp-page-handler="Exclusao" />
+            </div>
+
+            <div class="form-group mt-4">
+               
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

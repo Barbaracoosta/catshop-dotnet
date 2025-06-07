@@ -1,0 +1,48 @@
+﻿@page "/Catshop/{slug}/{id}"
+@model CatShop.Pages.DetalhesModel
+@{
+
+}
+<h2 class="my-3">@Model.ArtefatoFelino.Nome</h2>
+
+<div class="row">
+
+    <div class="col-4">
+        <img class="img-fluid rounded" src="@Model.ArtefatoFelino.Imagem">
+    </div>
+
+    <div class="col-6">
+        <h4 class="my-3">Sobre:</h4>
+        <p>@Model.ArtefatoFelino.Descricao</p>
+        <h5 class="my-3">Mais Info:</h5>
+        <ul>
+            <li>
+                <label asp-for="ArtefatoFelino.Preco"></label>:
+                @Html.DisplayFor(model => model.ArtefatoFelino.Preco)
+            </li>
+            <li>
+                <label asp-for="ArtefatoFelino.DisponibilidadeFormatada"></label>:
+                @Html.DisplayFor(model => model.ArtefatoFelino.DisponibilidadeFormatada)
+            </li>
+            <li>
+                <label asp-for="ArtefatoFelino.DataCadastro"></label>:
+                @Html.DisplayFor(model => model.ArtefatoFelino.DataCadastro)
+            </li>
+            @if (Model.Marca is not null)
+            {
+                <li>
+                    <label asp-for="ArtefatoFelino.MarcaId"></label>:
+                    @Html.DisplayFor(model => model.Marca)
+                </li>
+            }
+        </ul>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn my-3 btn-primary"
+               asp-page="/Edit" asp-route-id="@Model.ArtefatoFelino.ArtefatoFelinoId">Editar</a>
+        }
+        
+    </div>
+
+</div>
+
